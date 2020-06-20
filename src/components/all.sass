@@ -12,6 +12,11 @@ $black: #2b2523
 
 .navbar .navbar-menu
   box-shadow:none !important
+  z-index: 100
+
+.column1
+  width: 40vw
+  margin-left: 15vw
 
 .content .taglist
   list-style: none
@@ -23,10 +28,12 @@ $black: #2b2523
   flex-wrap: wrap
   justify-content: left
   align-items: center
+  width: 40vw
   li
     padding: 0 2rem 1rem 0
     margin-bottom: 1.5rem
     margin-top: 0
+
 
 // Helper Classes
 .full-width-image-container
@@ -50,6 +57,11 @@ $black: #2b2523
     display: flex
     justify-content: center
     align-items: center
+
+.grid
+  display: grid
+  grid-template-columns: 2fr 5fr
+  width: 100%
 
 .btn
     display: inline-block
@@ -78,8 +90,16 @@ $black: #2b2523
   width: 1.5rem
   height: 1.5rem
   fill: currentColor
-.navbar-brand .navbar-item.logo
+
+.navbar-brand .navbar-item
   padding: 0 1rem
+  text-decoration: none
+  
+  &:hover 
+    color: black
+    
+
+
 footer.footer
   padding: 3rem 0rem 0rem
   background-color: transparent
@@ -112,6 +132,8 @@ $menu-label-color: $white-ter
     vertical-align: middle
     display: inline
 
+.subtitle
+  margin: auto
 // blog roll
 .blog-list-item.is-featured
   background-color: #d6400033;

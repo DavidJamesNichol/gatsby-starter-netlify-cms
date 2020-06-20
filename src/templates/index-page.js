@@ -17,13 +17,24 @@ export const IndexPageTemplate = ({
 }) => (
   <div>
     <div
-      className="full-width-image margin-top-0"
+      style={{
+        // backgroundColor: 'rgb(255,255,255,0.2)',
+        backgroundColor: 'rgb(0,0,0,0.4)',
+        height: '90vh',
+        position: 'absolute',
+        width: '100%'
+      }}
+      ></div>
+    <div
+      className="full-width-image"
       style={{
         backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
         })`,
-        backgroundPosition: `top left`,
+        backgroundPosition: 'center top', 
         backgroundAttachment: `fixed`,
+        height: '90vh',
+        // paddingTop: '-10vh'
       }}
     >
       <div
@@ -31,44 +42,51 @@ export const IndexPageTemplate = ({
           display: 'flex',
           height: '150px',
           lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
+          justifyContent: 'center',
+          alignItems: 'center',
           flexDirection: 'column',
         }}
       >
         <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
+          className=""
           style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
+            // backgroundColor: 'rgb(0,0,0,0.2)',
+            color: 'rgb(255,255,255)',
+            // color: 'rgb(0,0,0, 0.6)',
+            // color: 'rgb(6, 181, 228, 0.6)',
+            textShadow: '.5px .5px 0px rgb(255,255,255,0.3)',
             lineHeight: '1',
             padding: '0.25em',
+            fontSize: '6rem',
+            fontWeight: 'bold',
+            zIndex: 10,
+            // marginTop: '10vh',
           }}
         >
           {title}
         </h1>
-        <h3
-          className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
+        <button
+          className=""
           style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
+            // boxShadow:
+            //   'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
+            // backgroundColor: 'rgb(255, 68, 0)',
+            // color: 'white',
+            // lineHeight: '1',
+            // padding: '0.25em',
+            margin: '1rem',
+            width: 'fit-content'
           }}
         >
           {subheading}
-        </h3>
+        </button>
       </div>
     </div>
     <section className="section section--gradient">
       <div className="container">
         <div className="section">
           <div className="columns">
-            <div className="column is-10 is-offset-1">
+            <div className="column1">
               <div className="content">
                 <div className="content">
                   <div className="tile">
