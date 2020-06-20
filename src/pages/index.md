@@ -1,7 +1,8 @@
 ---
 templateKey: index-page
 title: Begin Your Avolution
-image: /img/IMG_6611.jpg
+image: /img/coffee.png
+# image: /img/IMG_6611.jpg
 heading: Avolve Fitness
 subheading: Start My 7 Day Trial
 mainpitch:
