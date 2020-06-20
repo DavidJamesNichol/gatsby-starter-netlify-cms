@@ -1,5 +1,6 @@
 ---
 templateKey: index-page
+<<<<<<< HEAD
 title: Begin Your Avolution
 image: /img/IMG_6611.jpg
 heading: Avolve Fitness
@@ -7,12 +8,23 @@ subheading: Start My 7 Day Trial
 mainpitch:
   title: Avolve Is More Than A Gym
   description: >
+<<<<<<< HEAD
     avolve /āˈvälv/ v: To become better.
 description: >-
   Kaldi is the ultimate spot for coffee lovers who want to learn about their
   java’s origin and support the farmers that grew it. We take coffee production,
   roasting and brewing seriously and we’re glad to pass that knowledge to
   anyone.
+=======
+    Kaldi is the coffee store for everyone who believes that great coffee
+    shouldn't just taste good, it should do good too. We source all of our beans
+    directly from small scale sustainable farmers and make sure part of the
+    profits are reinvested in their communities.
+description: Kaldi is the ultimate spot for coffee lovers who want to learn
+  about their java’s origin and support the farmers that grew it. We take coffee
+  production, roasting and brewing seriously and we’re glad to pass that
+  knowledge to anyone.
+>>>>>>> 4d38b644bc6b110c491087d701720479b988aaab
 intro:
   blurbs:
     - image: /img/coffee.png
