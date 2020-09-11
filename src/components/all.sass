@@ -2,21 +2,170 @@
 
 // Config vars
 // Kaldi logo brand color: #FD461E
-$kaldi-red: #D64000
-$kaldi-red-invert: #fff
-
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+$primary: #06b5e4
+$secondary: #36A0E4
 $body-color: #333
 $black: #2b2523
 
+$reg-spacing: 1.5rem
+$sml-spacing: .5rem
+
+$reg-font: 20px
+$med-font: 30px
+$lrg-font: 40px
+
+$carousel-lrg: 40vh
+
+$information-phone: 576px
+$information-tablet: 1030px
+
+body
+  overflow: hidden
+
+h2
+  font-size: 1.5em!important
+
+.page-tiles li
+  list-style: none
+  margin: 1rem 0!important
+  &:before 
+    content: '✓  '
+
+article
+  padding: 2rem
+
+section
+  padding: 2rem 0
+
+
+
+//Navbar Import
+.nav-header 
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 1rem 1.25rem
+
+.logo 
+  // /* margin: 0;
+  // color: var(--primaryColor);
+  // font-family: var(--mainFont); */
+  color: $primary
+  width: 25vw
+  @media (max-width: $information-phone) 
+    width: 10vw
+
+.logo-btn 
+  background: transparent
+  border: none
+  outline: none
+  // @media (min-width: $information-tablet)
+  //   display: none
+
+.logo-btn:hover 
+  cursor: pointer
+
+.logo-btn > svg 
+  color: $primary
+
+
+.logo-icon 
+  color: var(--mainBlack)
+  font-size: 1.5rem
+
+.navbar 
+  background-color: black
+  @media (max-width: $information-phone) 
+    padding: 0 2rem
+
+.nav-links 
+  list-style-type: none
+  transition: var(--mainTransition)
+  height: 0
+  overflow: hidden
+  @media (min-width: $information-tablet)
+    height: auto
+    display: flex
+
+.nav-links > li > a 
+  color: $primary
+
+.show-nav 
+  // height: 10.2rem
+  height: fit-content
+
+.nav-links a 
+  display: block
+  padding: 1rem 1.25rem
+  text-decoration: none
+  text-transform: capitalize
+  color: var(--mainBlack)
+  transition: var(--mainTransition)
+  font-weight: bold
+  letter-spacing: var(--mainSpacing)
+
+.nav-links a:hover 
+  color: var(--primaryColor)
+
+.nav-social-links 
+  display: none
+  @media (min-width: $information-tablet)
+    display: flex
+    line-height: 0
+
+  .nav-center 
+    @media (min-width: $information-tablet)
+      max-width: 1170px
+      margin: 0 auto
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+  .nav-social-links a 
+    @media (min-width: $information-tablet)
+      color: var(--primaryColor)
+      margin: 0 0.5rem
+      font-size: 1.2rem
+      transition: var(--mainTransition)
+  
+  .nav-social-links a:hover 
+    @media (min-width: $information-tablet)
+      color: var(--mainBlack)
+      transform: translateY(-5px)
+
+//end of Navbar input
+
+.paragraph
+  margin: auto
+  width: 90%
+
+.underline
+  text-decoration: underline
+  text-decoration-color: $secondary
+
 .navbar .navbar-menu
   box-shadow:none !important
+  text-align: right
   z-index: 100
 
+.testimonial-carousel
+  height: $carousel-lrg
+  margin: auto
+  width: 90vw!important
 .column1
-  width: 40vw
-  margin-left: 15vw
+  margin: auto
+  width: 75vw
+
+.content1
+  margin: auto
+  width: 60vw
+
+.field
+  display: grid
+  grid-template-columns: 1fr 1fr
+
+.control-dots
+  display: none!important
 
 .content .taglist
   list-style: none
@@ -28,12 +177,31 @@ $black: #2b2523
   flex-wrap: wrap
   justify-content: left
   align-items: center
-  width: 40vw
+  width: 60vw
   li
-    padding: 0 2rem 1rem 0
     margin-bottom: 1.5rem
     margin-top: 0
+    padding: 0 2rem 1rem 0
 
+.center
+  display: flex
+  justify-content: center
+  align-items: center
+
+.cta-button
+  background-color: rgb(6, 181, 228)
+  border: none
+  border-radius: 10%
+  font-size: 24px
+  text-align: center
+  // color: white
+  // line-height: 1
+  // padding: 0.25em
+  margin: $reg-spacing
+  width: fit-content
+  z-index: 1000
+  @media (max-width: $information-phone) 
+    margin: 0
 
 // Helper Classes
 .full-width-image-container
@@ -50,13 +218,16 @@ $black: #2b2523
   align-items: center
 
 .full-width-image
-    width: 100vw
-    height: 400px
-    background-size: cover
-    background-position: bottom
-    display: flex
-    justify-content: center
-    align-items: center
+  width: 100vw
+  height: 400px
+  background-size: cover
+  background-position: bottom
+  display: flex
+  justify-content: center
+  align-items: center
+
+.is-link
+  background-color: $secondary!important
 
 .grid
   display: grid
@@ -98,20 +269,9 @@ $black: #2b2523
   &:hover 
     color: black
     
-
-
 footer.footer
   padding: 3rem 0rem 0rem
   background-color: transparent
-
-//Menu overrides
-$menu-item-color: $white-ter
-$menu-item-hover-color: $black !important
-$menu-item-hover-background-color: $black
-$menu-item-active-color: $kaldi-red-invert
-$menu-item-active-background-color:	$kaldi-red-invert
-$menu-list-border-left: 1px solid $kaldi-red-invert
-$menu-label-color: $white-ter
 
 
 .menu-label
@@ -120,6 +280,104 @@ $menu-label-color: $white-ter
 .menu-list
   list-style: none !important
   text-align: left
+.pricing-card
+  margin: 1rem
+  padding: 2rem
+  @media (max-width: $information-phone) 
+    padding: 0
+    margin: 0
+  // overflow: hidden
+.pricing-card h4
+  font-size: $med-font!important
+.pricing-card i
+  color: $primary
+  font-size: $lrg-font
+.promotion-card
+  background-color: rgba(255, 255, 255, 0.5)
+  margin: 30vh 0 0 -70%
+  width: 20%
+  @media (max-width: $information-phone) 
+    margin: 20vh auto 0
+    width: 80%
+.promotion-card h2
+  line-height: 1.5rem
+  margin: 0 0 1rem 
+.cta-button, .promotion-card button
+  background-color: $primary
+  border: none
+  border-radius: 26px
+  margin-top: 2rem
+  padding: 12px 39px
+
+.testimonials-carousel div div button
+  display: none!important
+.testimonial-button
+  display: block
+  text-align: center
+.testimonial-card, .promotion-card, .pricing-card
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2) 
+  border-radius: 10px
+  color: #4a4a4a
+  padding: $reg-spacing 
+.testimonial-card
+  height: 30vh
+  margin: 2px
+  overflow-y: hidden
+.scroll
+  overflow-y: scroll!important
+.testimonial-citation
+  margin: $sml-spacing
+  text-align: center
+.testimonial-image
+  object-fit: cover
+  border-radius: 20%
+  display: block
+  height: 80px
+  margin: auto
+  width: 80px
+.testimonial-message
+  // background-color: whitesmoke
+  border-radius: 15
+  border-radius: 4px
+  display: block
+  font-size: 1rem
+  height: $carousel-lrg
+  margin: 0 $sml-spacing
+  overflow: visible
+
+.testimonial-message-modal
+  margin: auto
+  width: 50%
+.testimonial-text
+
+.training-page-header 
+  margin: 0 20%
+  width: 60%
+  @media (max-width: $information-phone) 
+    margin: auto
+    width: 90%
+
+.page-tile section
+  // background-color: #d7d7d7
+  margin: 1rem 
+
+.page-tiles
+  display: grid
+  grid-template-columns: 1fr 1fr
+  div
+    padding: 2rem
+  @media (max-width: $information-phone) 
+    display: block;
+    div
+      padding: 0
+  
+.rec-arrows-parent button
+  display: none
+  
+
+.promotion
+  height: 70vh
+  width: 100vw
 .social
   padding: 2em
 .social a
@@ -135,6 +393,8 @@ $menu-label-color: $white-ter
 .subtitle
   margin: auto
 // blog roll
+.tile-image
+  height: 40vh
 .blog-list-item.is-featured
   background-color: #d6400033;
 .blog-list-item header

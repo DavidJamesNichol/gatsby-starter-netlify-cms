@@ -1,28 +1,66 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import { v4 } from 'uuid'
+import Carousel from 'react-elastic-carousel';
+import Testimonial from './Testimonial'
 
-const Testimonials = ({ testimonials }) => (
-  <div>
+export default function Testimonials({testimonials}) {
+  
+  return (
+  <Carousel
+    autoPlaySpeed={10000}
+    breakPoints={[
+      { 
+        width: 1, 
+        itemsToShow: 2, 
+        // itemsToScroll: (testimonials.length - 2) 
+      },
+      { 
+        width: 550, 
+        itemsToShow: 3, 
+        // itemsToScroll: (testimonials.length - 3) 
+      },
+      { 
+        width: 850, 
+        itemsToShow: 4, 
+        // itemsToScroll: (testimonials.length - 4) 
+      },
+      { 
+        width: 1150, 
+        itemsToShow: 5, 
+        // itemsToScroll: (testimonials.length - 5) 
+      },
+      { 
+        width: 1450, 
+        itemsToShow: 6, 
+        // itemsToScroll: (testimonials.length - 6) 
+      },
+      { 
+        width: 1750,
+        itemsToShow: 7,
+        // itemsToScroll: (testimonials.length - 7) 
+      },
+    ]}
+    className='testimonials-carousel'
+    enableSwipe={true}
+    enableMouseSwipe={true}
+    enableAutoPlay={true}
+    // itemsToShow={4}
+    // itemsToScroll={testimonials.length}
+    showArrows={false}
+    transitionMs={700}
+  >
     {testimonials.map((testimonial) => (
-      <article key={v4()} className="message">
-        <div className="message-body">
-          {testimonial.quote}
-          <br />
-          <cite> – {testimonial.author}</cite>
-        </div>
-      </article>
+      <Testimonial testimonial={testimonial} />
     ))}
-  </div>
-)
+  </Carousel>
+  )
+}
 
 Testimonials.propTypes = {
   testimonials: PropTypes.arrayOf(
     PropTypes.shape({
-      quote: PropTypes.string,
-      author: PropTypes.string,
+      text: PropTypes.string,
+      name: PropTypes.string,
     })
   ),
 }
-
-export default Testimonials

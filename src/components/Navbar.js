@@ -1,100 +1,112 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import React, { useState } from "react"
+import { FaAlignRight } from "react-icons/fa"
+// import socialIcons from "../constants/social-icons"
+import {Link} from "gatsby";
+import config from '../../config'
+import { motion } from 'framer-motion'
+// import logo from '../images/logo.png'
 
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
+const Navbar = () => {
+    const [isNavOpen, setIsNavOpen] = useState(false)
+    const [canNavOpen, setCanNavOpen] = useState(false)
+    const toggleNav = () => {
+        setCanNavOpen(canNavOpen => true)
+        setIsNavOpen(isNavOpen => !isNavOpen)
     }
-  }
+    const links = Object.entries(config.links)
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
-    )
-  }
 
-  render() {
-    return (
-      <nav
-        className="navbar is-fixed-top"
-        role="navigation"
-        aria-label="main-navigation"
-        style={{position: 'fixed'}}
-      >
-        <div className="grid">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              AVOLVE FITNESS
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-    )
-  }
+const variants = {
+  open: { x: 0 },
+  closed: { 
+    x: '-100%', 
+    transition: {
+      delay: 0.2
+    } 
+   }
 }
 
-export default Navbar
+const ulVariants = {
+  open: { 
+    scale: 1.02,
+    height: 'auto',
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+      staggerDirection: -1, //1 forwards, -1 backwards
+      // when: "beforeChildren", //"afterChildren" and "beforeChildren"
+    } 
+  },
+  closed: { 
+    scale: 1,
+    height: 0, 
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+      staggerDirection: 1, //1 forwards, -1 backwards
+      when: "afterChildren", //"afterChildren" and "beforeChildren"
+    } 
+   },
+}
+
+const liVariants = {
+  open: { 
+    y: 0, 
+    opacity: 1
+  },
+  closed: { y: -20, opacity: 1 },
+}
+
+    console.log('linkszz', links)
+    return (
+        <nav>
+            <div 
+              className='nav-center'
+              // variants={variants} 
+              // initial="closed" 
+              // animate={ isNavOpen ? 'open' : 'closed'}
+              // transition={{ damping: 300 }} 
+            >
+                <div className='nav-header'>
+                <Link fade to={config.links.home.path}>
+                    
+                    <h2 className='logo'>Avolve</h2>
+                </Link>
+                    <button 
+                      type="button"
+                      className='logo-btn'
+                      onClick={toggleNav}
+                      >
+                        <FaAlignRight className='logo-icon' />
+                    </button>
+                </div>
+                <motion.ul 
+                  className={ canNavOpen ? `nav-links show-nav`: `nav-links`}
+                  variants={ulVariants}
+                  animate={ isNavOpen ? 'open' : 'closed'}
+                >
+                    {links.map((item, index) => {
+
+                        return (
+                            <motion.li 
+                              key={index}
+                              variants={liVariants}
+                            >
+                                <Link fade to={item[1].path}>{item[1].text}</Link>
+                            </motion.li>
+                        )
+                    })}
+                </motion.ul>
+                <div className='nav-social-links'>
+                    {/* {socialIcons.map((item, index) => {
+                        return <a target="_blank" rel="noopener noreferrer" key={index} href={item.url}>
+                            {item.icon}
+                        </a>
+                    })} */}
+                </div>
+            </div>
+        </nav>
+    )
+}
+
+export default Navbar;
